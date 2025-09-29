@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+h1 {
+  text-align: center;
+}
+.add-task {
+  display: flex;
+  margin-bottom: 20px;
+}
+#taskInput {
+  flex: 1;
+  padding: 8px;
+}
+#addBtn {
+  padding: 8px 12px;
+  margin-left: 5px;
+}
+#taskList {
+  list-style: none;
+  padding: 0;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}

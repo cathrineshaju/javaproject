@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${#strings.isEmpty(todo.id) ? 'Add Task' : 'Edit Task'}">Task Form</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    h1 { text-align: center; color: #4a90e2; }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .actions {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    button {
+      background: #4a90e2;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #357abd; }
+    a.cancel {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 th:text="${#strings.isEmpty(todo.id) ? 'Add New Task' : 'Edit Task'}"></h1>
+
+    <form th:action="@{/todos}" th:object="${todo}" method="post">
+      <input type="hidden" th:if="${todo.id}" th:field="*{id}">
+      
+      <label for="title">Title</label>
+      <input type="text" id="title" th:field="*{title}" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="3" th:field="*{description}"></textarea>
+
+      <div class="actions">
+        <button type="submit">Save</button>
+        <a th:href="@{/list}" class="cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
